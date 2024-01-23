@@ -66,7 +66,7 @@ For investigating differences in hibernation-related gene function when shared a
 - First need to add the human proteome to the OrthoFinder results, to map human GO terms to the other species proteins
     - mapping script: [map_humanGO.py](https://github.com/aanakamo/kelleylab_rotation/blob/main/scripts/map_humanGO.py)
 - Using [clusterProfiler](https://bioconductor.org/packages/release/bioc/html/clusterProfiler.html) gseGO() to find enriched terms
-- R Notebook for making GO dotplots: [upsetplot.Rmd](https://github.com/aanakamo/kelleylab_rotation/blob/main/scripts/upsetplot.Rmd)
+- R Notebook for making GO dotplots: [go_analysis.Rmd](https://github.com/aanakamo/kelleylab_rotation/blob/main/scripts/go_analysis.Rmd)
     - for each shared tissue, make dotplots for genes from shared OGs, and dotplots for genes from OGs unique to a species
     - each plot is separated by upregulated (activated) and downregulated (suppressed)
 
