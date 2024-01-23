@@ -19,6 +19,8 @@ organism = "org.Hs.eg.db"
 library(organism, character.only = TRUE)
 library(DOSE)
 library(patchwork)
+#BiocManager::install("PPInfer")
+library(PPInfer)
 
 ```
 
@@ -134,7 +136,7 @@ run_gsea <- function(subset) {
 
 h = 6
 w = 7
-c = 15
+c = 24
 ```
 
 
@@ -143,57 +145,66 @@ PLOTS
 ADIPOSE
 ```{r}
 p <- run_gsea(int_adipose.brown_bear.syrian_hamster)
-g <- dotplot(p, title="int_adipose.brown_bear.syrian_hamster", showCategory=c, split=".sign") + facet_grid(.~.sign)
+p1 <- mutate(p, enrichmentScore = abs(enrichmentScore))
+g <- dotplot(p1, title="int_adipose.brown_bear.syrian_hamster", x="enrichmentScore", size="Count", showCategory=c, label_format=50, split=".sign") + facet_grid(.~.sign)
 g
-ggsave("int_adipose.brown_bear.syrian_hamster.GO.png", g, width=w, height=h, units="in")
+#ggsave("int_adipose.brown_bear.syrian_hamster.GO.png", g, width=w, height=h, units="in")
 
 p <- run_gsea(int_adipose.brown_bear.dwarf_lemur)
-g <- dotplot(p, title="int_adipose.brown_bear.dwarf_lemur", showCategory=c, split=".sign") + facet_grid(.~.sign)
+p1 <- mutate(p, enrichmentScore = abs(enrichmentScore))
+g <- dotplot(p1, title="int_adipose.brown_bear.dwarf_lemur", x="enrichmentScore", size="Count", showCategory=c, label_format=50, split=".sign") + facet_grid(.~.sign)
 g
-ggsave("int_adipose.brown_bear.dwarf_lemur.GO.png", g, width=w, height=h, units="in")
+#ggsave("int_adipose.brown_bear.dwarf_lemur.GO.png", g, width=w, height=h, units="in")
 
 p <- run_gsea(int_adipose.syrian_hamster.dwarf_lemur)
-g <- dotplot(p, title="int_adipose.syrian_hamster.dwarf_lemur", showCategory=c, split=".sign") + facet_grid(.~.sign)
+p1 <- mutate(p, enrichmentScore = abs(enrichmentScore))
+g <- dotplot(p1, title="int_adipose.syrian_hamster.dwarf_lemur", x="enrichmentScore", size="Count", showCategory=c, label_format=50, split=".sign") + facet_grid(.~.sign)
 g
-ggsave("int_adipose.syrian_hamster.dwarf_lemur.GO.png", g, width=w, height=h, units="in")
+#ggsave("int_adipose.syrian_hamster.dwarf_lemur.GO.png", g, width=w, height=h, units="in")
 
 p <- run_gsea(int_adipose.brown_bear.syrian_hamster.dwarf_lemur)
-g <- dotplot(p, title="int_adipose.brown_bear.syrian_hamster.dwarf_lemur", showCategory=c, split=".sign") + facet_grid(.~.sign)
+p1 <- mutate(p, enrichmentScore = abs(enrichmentScore))
+g <- dotplot(p1, title="int_adipose.brown_bear.syrian_hamster.dwarf_lemur", x="enrichmentScore", size="Count", showCategory=c, label_format=50, split=".sign") + facet_grid(.~.sign)
 g
-ggsave("int_adipose.brown_bear.syrian_hamster.dwarf_lemur.GO.png", g, width=w, height=h, units="in")
+#ggsave("int_adipose.brown_bear.syrian_hamster.dwarf_lemur.GO.png", g, width=w, height=h, units="in")
 
 p <- run_gsea(uni_adipose.brown_bear)
-g <- dotplot(p, title="uni_adipose.brown_bear", showCategory=7, split=".sign") + facet_grid(.~.sign)
+p1 <- mutate(p, enrichmentScore = abs(enrichmentScore))
+g <- dotplot(p1, title="uni_adipose.brown_bear", x="enrichmentScore", size="Count", showCategory=12, label_format=50, split=".sign") + facet_grid(.~.sign)
 g
-ggsave("uni_adipose.brown_bear.GO.png", g, width=w, height=h, units="in")
+#ggsave("uni_adipose.brown_bear.GO.png", g, width=w, height=h, units="in")
 
 p <- run_gsea(uni_adipose.syrian_hamster)
-g <- dotplot(p, title="uni_adipose.syrian_hamster", showCategory=8, split=".sign") + facet_grid(.~.sign)
+p1 <- mutate(p, enrichmentScore = abs(enrichmentScore))
+g <- dotplot(p1, title="uni_adipose.syrian_hamster", x="enrichmentScore", size="Count", showCategory=14, label_format=50, split=".sign") + facet_grid(.~.sign)
 g
-ggsave("uni_adipose.syrian_hamster.GO.png", g, width=w, height=h, units="in")
+#ggsave("uni_adipose.syrian_hamster.GO.png", g, width=w, height=h, units="in")
 
 p <- run_gsea(uni_adipose.dwarf_lemur)
-g <- dotplot(p, title="uni_adipose.dwarf_lemur", showCategory=c, split=".sign") + facet_grid(.~.sign)
+p1 <- mutate(p, enrichmentScore = abs(enrichmentScore))
+g <- dotplot(p1, title="uni_adipose.dwarf_lemur", x="enrichmentScore", size="Count", showCategory=c, label_format=50, split=".sign") + facet_grid(.~.sign)
 g
-ggsave("uni_adipose.dwarf_lemur.GO.png", g, width=w, height=h, units="in")
+#ggsave("uni_adipose.dwarf_lemur.GO.png", g, width=w, height=h, units="in")
 
 ```
 
 LIVER
 ```{r}
 p <- run_gsea(int_liver.brown_bear.brandts_bat)
-g <- dotplot(p, title="int_liver.brown_bear.brandts_bat", showCategory=c, split=".sign") + facet_grid(.~.sign)
+p1 <- mutate(p, enrichmentScore = abs(enrichmentScore))
+g <- dotplot(p1, title="int_liver.brown_bear.brandts_bat", x="enrichmentScore", size="Count", showCategory=c, label_format=50, split=".sign") + facet_grid(.~.sign)
 g
-ggsave("int_liver.brown_bear.brandts_bat.GO.png", g, width=w, height=h, units="in")
+#ggsave("int_liver.brown_bear.brandts_bat.GO.png", g, width=w, height=h, units="in")
 
 p <- run_gsea(uni_liver.brown_bear)
-g <- dotplot(p, title="uni_liver.brown_bear", showCategory=8, split=".sign") + facet_grid(.~.sign)
+p1 <- mutate(p, enrichmentScore = abs(enrichmentScore))
+g <- dotplot(p1, title="uni_liver.brown_bear", x="enrichmentScore", size="Count", showCategory=12, label_format=50, split=".sign") + facet_grid(.~.sign)
 g
-ggsave("uni_liver.brown_bear.GO.png", g, width=w, height=h, units="in")
+#ggsave("uni_liver.brown_bear.GO.png", g, width=w, height=h, units="in")
 
 p <- run_gsea(uni_liver.brandts_bat)  ## no enriched terms found
-p
-#g <- dotplot(p, title="uni_liver.brandts_bat", showCategory=c, split=".sign") + facet_grid(.~.sign)
+#p1 <- mutate(p, enrichmentScore = abs(enrichmentScore))
+#g <- dotplot(p1, title="uni_liver.brandts_bat", x="enrichmentScore", size="Count", showCategory=12, label_format=50, split=".sign") + facet_grid(.~.sign)
 #g
 #ggsave("uni_liver.brandts_bat.GO.png", g, width=w, height=h, units="in")
 
@@ -203,19 +214,22 @@ p
 MUSCLE
 ```{r}
 p <- run_gsea(int_muscle.brown_bear.arctic_ground_squirrel)
-g <- dotplot(p, title="int_muscle.brown_bear.arctic_ground_squirrel", showCategory=14, split=".sign") + facet_grid(.~.sign)
+p1 <- mutate(p, enrichmentScore = abs(enrichmentScore))
+g <- dotplot(p1, title="int_muscle.brown_bear.arctic_ground_squirrel", x="enrichmentScore", size="Count", showCategory=c, label_format=50, split=".sign") + facet_grid(.~.sign)
 g
-ggsave("int_muscle.brown_bear.arctic_ground_squirrel.GO.png", g, width=w, height=h, units="in")
+#ggsave("int_muscle.brown_bear.arctic_ground_squirrel.GO.png", g, width=w, height=h, units="in")
 
 p <- run_gsea(uni_muscle.brown_bear)
-g <- dotplot(p, title="uni_muscle.brown_bear", showCategory=9, split=".sign") + facet_grid(.~.sign)
+p1 <- mutate(p, enrichmentScore = abs(enrichmentScore))
+g <- dotplot(p1, title="uni_muscle.brown_bear", x="enrichmentScore", size="Count", showCategory=21, label_format=50, split=".sign") + facet_grid(.~.sign)
 g
-ggsave("uni_muscle.brown_bear.GO.png", g, width=w, height=h, units="in")
+#ggsave("uni_muscle.brown_bear.GO.png", g, width=w, height=h, units="in")
 
 p <- run_gsea(uni_muscle.arctic_ground_squirrel)
-g <- dotplot(p, title="uni_muscle.arctic_ground_squirrel", showCategory=8, split=".sign") + facet_grid(.~.sign)
+p1 <- mutate(p, enrichmentScore = abs(enrichmentScore))
+g <- dotplot(p1, title="uni_muscle.arctic_ground_squirrel", x="enrichmentScore", size="Count", showCategory=22, label_format=50, split=".sign") + facet_grid(.~.sign)
 g
-ggsave("uni_muscle.arctic_ground_squirrel.GO.png", g, width=w, height=h, units="in")
+#ggsave("uni_muscle.arctic_ground_squirrel.GO.png", g, width=w, height=h, units="in")
 
 ```
 
@@ -223,22 +237,198 @@ ggsave("uni_muscle.arctic_ground_squirrel.GO.png", g, width=w, height=h, units="
 BRAIN
 ```{r}
 p <- run_gsea(int_brain.13_lined_ground_squirrel.brandts_bat)
-g <- dotplot(p, title="int_brain.13_lined_ground_squirrel.brandts_bat", showCategory=c, split=".sign") + facet_grid(.~.sign)
+p1 <- mutate(p, enrichmentScore = abs(enrichmentScore))
+g <- dotplot(p1, title="int_brain.13_lined_ground_squirrel.brandts_bat", x="enrichmentScore", size="Count", showCategory=c, label_format=50, split=".sign") + facet_grid(.~.sign)
 g
-ggsave("int_brain.13_lined_ground_squirrel.brandts_bat.GO.png", g, width=w, height=h, units="in")
+#ggsave("int_brain.13_lined_ground_squirrel.brandts_bat.GO.png", g, width=w, height=h, units="in")
 
 p <- run_gsea(uni_brain.13_lined_ground_squirrel)
-g <- dotplot(p, title="uni_brain.13_lined_ground_squirrel", showCategory=8, split=".sign") + facet_grid(.~.sign)
+p1 <- mutate(p, enrichmentScore = abs(enrichmentScore))
+g <- dotplot(p1, title="uni_brain.13_lined_ground_squirrel", x="enrichmentScore", size="Count", showCategory=12, label_format=50, split=".sign") + facet_grid(.~.sign)
 g
-ggsave("uni_brain.13_lined_ground_squirrel.GO.png", g, width=w, height=h, units="in")
+#ggsave("uni_brain.13_lined_ground_squirrel.GO.png", g, width=w, height=h, units="in")
 
 p <- run_gsea(uni_brain.brandts_bat)   ## no enriched terms found
-p
-#g <- dotplot(p, title="uni_brain.brandts_bat", showCategory=c, split=".sign") + facet_grid(.~.sign)
+#p1 <- mutate(p, enrichmentScore = abs(enrichmentScore))
+#g <- dotplot(p1, title="uni_brain.brandts_bat", x="enrichmentScore", size="Count", showCategory=c, label_format=50, split=".sign") + facet_grid(.~.sign)
 #g
 #ggsave("uni_brain.brandts_bat.GO.png", g, width=w, height=h, units="in")
 
 ```
+
+
+
+ADIPOSE treeplot
+```{r}
+p <- run_gsea(int_adipose.brown_bear.syrian_hamster)
+p.df <- as.data.frame(p)
+p.df <- p.df[order(p.df$NES, decreasing=TRUE),]
+cat = c(head(p.df$Description, n=24))
+cat
+g <- treeplot(pairwise_termsim(p), title="int_adipose.brown_bear.syrian_hamster", showCategory=cat, label_format_cladelab=30, label_format_tiplab=100, color="NES", cex_category=0.7, nCluster=5, nWords=4) +
+  scale_colour_gradient2(low = "dodgerblue3",mid = "white",high = "red3", midpoint = 0, name="NES")
+g
+ggsave("int_adipose.brown_bear.syrian_hamster.GO.tree.png", g, width=14, height=5, units="in")
+
+p <- run_gsea(int_adipose.brown_bear.dwarf_lemur)
+p.df <- as.data.frame(p)
+p.df <- p.df[order(p.df$NES, decreasing=TRUE),]
+cat = c(head(p.df$Description, n=24))
+cat
+g <- treeplot(pairwise_termsim(p), title="int_adipose.brown_bear.dwarf_lemur", showCategory=cat, label_format_cladelab=30, label_format_tiplab=100, color="NES", cex_category=0.7, nCluster=5, nWords=4) +
+  scale_colour_gradient2(low = "dodgerblue3",mid = "white",high = "red3", midpoint = 0, name="NES")
+g
+ggsave("int_adipose.brown_bear.dwarf_lemur.GO.tree.png", g, width=14, height=5, units="in")
+
+p <- run_gsea(int_adipose.syrian_hamster.dwarf_lemur)
+p.df <- as.data.frame(p)
+p.df <- p.df[order(p.df$NES, decreasing=TRUE),]
+cat = c(head(p.df$Description, n=24))
+cat
+g <- treeplot(pairwise_termsim(p), title="int_adipose.syrian_hamster.dwarf_lemur", showCategory=cat, label_format_cladelab=30, label_format_tiplab=100, color="NES", cex_category=0.7, nCluster=5, nWords=4) +
+  scale_colour_gradient2(low = "dodgerblue3",mid = "white",high = "red3", midpoint = 0, name="NES")
+g
+ggsave("int_adipose.syrian_hamster.dwarf_lemur.GO.tree.png", g, width=14, height=5, units="in")
+
+p <- run_gsea(int_adipose.brown_bear.syrian_hamster.dwarf_lemur)
+p.df <- as.data.frame(p)
+p.df <- p.df[order(p.df$NES, decreasing=TRUE),]
+cat = c(head(p.df$Description, n=24))
+cat
+g <- treeplot(pairwise_termsim(p), title="int_adipose.brown_bear.syrian_hamster.dwarf_lemur", showCategory=cat, label_format_cladelab=30, label_format_tiplab=100, color="NES", cex_category=0.7, nCluster=5, nWords=4) +
+  scale_colour_gradient2(low = "dodgerblue3",mid = "white",high = "red3", midpoint = 0, name="NES")
+g
+ggsave("int_adipose.brown_bear.syrian_hamster.dwarf_lemur.GO.tree.png", g, width=14, height=5, units="in")
+
+p <- run_gsea(uni_adipose.brown_bear)
+p.df <- as.data.frame(p)
+p.df <- p.df[order(p.df$NES, decreasing=TRUE),]
+cat = c(head(p.df$Description, n=12), tail(p.df$Description, n=12))
+cat
+g <- treeplot(pairwise_termsim(p), title="uni_adipose.brown_bear", showCategory=cat, label_format_cladelab=30, label_format_tiplab=100, color="NES", cex_category=0.7, nCluster=5, nWords=4) +
+  scale_colour_gradient2(low = "dodgerblue3",mid = "white",high = "red3", midpoint = 0, name="NES")
+g
+ggsave("uni_adipose.brown_bear.GO.tree.png", g, width=14, height=5, units="in")
+
+p <- run_gsea(uni_adipose.syrian_hamster)
+p.df <- as.data.frame(p)
+p.df <- p.df[order(p.df$NES, decreasing=TRUE),]
+cat = c(head(p.df$Description, n=12), tail(p.df$Description, n=12))
+cat
+g <- treeplot(pairwise_termsim(p), title="uni_adipose.syrian_hamster", showCategory=cat, label_format_cladelab=30, label_format_tiplab=100, color="NES", cex_category=0.7, nCluster=5, nWords=4) +
+  scale_colour_gradient2(low = "dodgerblue3",mid = "white",high = "red3", midpoint = 0, name="NES")
+g
+ggsave("uni_adipose.syrian_hamster.GO.tree.png", g, width=14, height=5, units="in")
+
+#p <- run_gsea(uni_adipose.dwarf_lemur)   ### no enriched
+#p.df <- as.data.frame(p)
+#p.df <- p.df[order(p.df$NES, decreasing=TRUE),]
+#cat = c(tail(p.df$Description, n=3))
+#cat
+#g <- treeplot(pairwise_termsim(p), title="uni_adipose.dwarf_lemur", showCategory=cat, label_format_cladelab=30, label_format_tiplab=100, color="NES", cex_category=0.7, nCluster=5, #nWords=4) +
+#  scale_colour_gradient2(low = "dodgerblue3",mid = "white",high = "red3", midpoint = 0, name="NES")
+#g
+#ggsave("uni_adipose.dwarf_lemur.GO.tree.png", g, width=14, height=5, units="in")
+
+```
+
+
+LIVER treeplot
+```{r}
+p <- run_gsea(int_liver.brown_bear.brandts_bat)
+p.df <- as.data.frame(p)
+p.df <- p.df[order(p.df$NES, decreasing=TRUE),]
+cat = c(head(p.df$Description, n=24))
+cat
+g <- treeplot(pairwise_termsim(p), title="int_liver.brown_bear.brandts_bat", showCategory=cat, label_format_cladelab=30, label_format_tiplab=100, color="NES", cex_category=0.7, nCluster=5, nWords=4) +
+  scale_colour_gradient2(low = "dodgerblue3",mid = "white",high = "red3", midpoint = 0, name="NES")
+g
+ggsave("int_liver.brown_bear.brandts_bat.GO.tree.png", g, width=14, height=5, units="in")
+
+p <- run_gsea(uni_liver.brown_bear)
+p.df <- as.data.frame(p)
+p.df <- p.df[order(p.df$NES, decreasing=TRUE),]
+cat = c(head(p.df$Description, n=12), tail(p.df$Description, n=12))
+cat
+g <- treeplot(pairwise_termsim(p), title="uni_liver.brown_bear", showCategory=cat, label_format_cladelab=30, label_format_tiplab=100, color="NES", cex_category=0.7, nCluster=5, nWords=4) +
+  scale_colour_gradient2(low = "dodgerblue3",mid = "white",high = "red3", midpoint = 0, name="NES")
+g
+ggsave("uni_liver.brown_bear.GO.tree.png", g, width=14, height=5, units="in")
+
+#p <- run_gsea(uni_liver.brandts_bat)  ## no enriched terms found
+#p1 <- mutate(p, enrichmentScore = abs(enrichmentScore))
+#g <- dotplot(p1, title="uni_liver.brandts_bat", x="enrichmentScore", size="Count", showCategory=12, label_format=50, split=".sign") + facet_grid(.~.sign)
+#g
+#ggsave("uni_liver.brandts_bat.GO.tree.png", g, width=14, height=5, units="in")
+
+```
+
+
+MUSCLE treeplot
+```{r}
+p <- run_gsea(int_muscle.brown_bear.arctic_ground_squirrel)
+p.df <- as.data.frame(p)
+p.df <- p.df[order(p.df$NES, decreasing=TRUE),]
+cat = c(head(p.df$Description, n=24))
+cat
+g <- treeplot(pairwise_termsim(p), title="int_muscle.brown_bear.arctic_ground_squirrel", showCategory=cat, label_format_cladelab=30, label_format_tiplab=100, color="NES", cex_category=0.7, nCluster=5, nWords=4) +
+  scale_colour_gradient2(low = "dodgerblue3",mid = "white",high = "red3", midpoint = 0, name="NES")
+g
+ggsave("int_muscle.brown_bear.arctic_ground_squirrel.GO.tree.png", g, width=14, height=5, units="in")
+
+p <- run_gsea(uni_muscle.brown_bear)
+p.df <- as.data.frame(p)
+p.df <- p.df[order(p.df$NES, decreasing=TRUE),]
+cat = c(head(p.df$Description, n=12), tail(p.df$Description, n=12))
+cat
+g <- treeplot(pairwise_termsim(p), title="uni_muscle.brown_bear", showCategory=cat, label_format_cladelab=30, label_format_tiplab=100, color="NES", cex_category=0.7, nCluster=5, nWords=4) +
+  scale_colour_gradient2(low = "dodgerblue3",mid = "white",high = "red3", midpoint = 0, name="NES")
+g
+ggsave("uni_muscle.brown_bear.GO.tree.png", g, width=14, height=5, units="in")
+
+p <- run_gsea(uni_muscle.arctic_ground_squirrel)
+p.df <- as.data.frame(p)
+p.df <- p.df[order(p.df$NES, decreasing=TRUE),]
+cat = c(head(p.df$Description, n=17), tail(p.df$Description, n=7))
+cat
+g <- treeplot(pairwise_termsim(p), title="uni_muscle.arctic_ground_squirrel", showCategory=cat, label_format_cladelab=30, label_format_tiplab=100, color="NES", cex_category=0.7, nCluster=5, nWords=4) +
+  scale_colour_gradient2(low = "dodgerblue3",mid = "white",high = "red3", midpoint = 0, name="NES")
+g
+ggsave("uni_muscle.arctic_ground_squirrel.GO.tree.png", g, width=14, height=5, units="in")
+
+```
+
+
+BRAIN treeplot
+```{r}
+p <- run_gsea(int_brain.13_lined_ground_squirrel.brandts_bat)
+p.df <- as.data.frame(p)
+p.df <- p.df[order(p.df$NES, decreasing=TRUE),]
+cat = c(head(p.df$Description, n=24))
+cat
+g <- treeplot(pairwise_termsim(p), title="int_brain.13_lined_ground_squirrel.brandts_bat", showCategory=cat, label_format_cladelab=30, label_format_tiplab=100, color="NES", cex_category=0.7, nCluster=5, nWords=4) +
+  scale_colour_gradient2(low = "dodgerblue3",mid = "white",high = "red3", midpoint = 0, name="NES")
+g
+#ggsave("int_brain.13_lined_ground_squirrel.brandts_bat.GO.tree.png", g, width=14, height=5, units="in")
+
+p <- run_gsea(uni_brain.13_lined_ground_squirrel)
+p.df <- as.data.frame(p)
+p.df <- p.df[order(p.df$NES, decreasing=TRUE),]
+cat = c(head(p.df$Description, n=12), tail(p.df$Description, n=12))
+cat
+g <- treeplot(pairwise_termsim(p), title="uni_brain.13_lined_ground_squirrel", showCategory=cat, label_format_cladelab=30, label_format_tiplab=100, color="NES", cex_category=0.7, nCluster=5, nWords=4) +
+  scale_colour_gradient2(low = "dodgerblue3",mid = "white",high = "red3", midpoint = 0, name="NES")
+g
+#ggsave("uni_brain.13_lined_ground_squirrel.GO.tree.png", g, width=14, height=5, units="in")
+
+#p <- run_gsea(uni_brain.brandts_bat)   ## no enriched terms found
+#p1 <- mutate(p, enrichmentScore = abs(enrichmentScore))
+#g <- dotplot(p1, title="uni_brain.brandts_bat", x="enrichmentScore", size="Count", showCategory=c, label_format=50, split=".sign") + facet_grid(.~.sign)
+#g
+#ggsave("uni_brain.brandts_bat.GO.png", g, width=w, height=h, units="in")
+
+```
+
 
 
 
